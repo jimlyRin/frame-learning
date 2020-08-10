@@ -19,4 +19,13 @@ public class DemoController {
     public String index() {
         return "hello demo";
     }
+
+    @GetMapping(value = "/fusing")
+    public String fusing() {
+        try {
+            Thread.sleep(5000);
+        } catch (InterruptedException ex) {
+        }
+        return "当你看到这段字表示熔断失败了";
+    }
 }
