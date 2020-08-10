@@ -6,7 +6,7 @@ eureka:
     appname: eureka
   client:
     fetch-registry: false
-    register-with-eureka: false # 单点的时候设置为 false 禁止注册自身
+    register-with-eureka: false # 鍗曠偣鐨勬椂鍊欒缃负 false 绂佹娉ㄥ唽鑷韩
     service-url:
       default-zone: http://localhost:${server.port}/eureka/
   server:
