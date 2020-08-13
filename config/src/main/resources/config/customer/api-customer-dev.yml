@@ -1,0 +1,5 @@
+data:
+  env: api-customer-dev
+  user:
+    username: api-customer
+    password: 123456
