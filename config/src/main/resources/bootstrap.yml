@@ -7,7 +7,8 @@ spring:
     config:
       server:
         native: #本地仓库存储
-          search-locations: classpath:/config/{application}
+#          search-locations: classpath:/config/{application}
+          search-locations: file:///config-repo/{application}
         git: #Git仓库存储
           uri: https://gitee.com/macrozheng/mall-config.git
           username: macro

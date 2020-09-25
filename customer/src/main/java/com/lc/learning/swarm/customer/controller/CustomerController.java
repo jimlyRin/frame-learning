@@ -1,6 +1,7 @@
 package com.lc.learning.swarm.customer.controller;
 
-import com.lc.learning.swarm.customer.Feign.DemoServiceFeign;
+import com.lc.learning.swarm.customer.config.UserConfig;
+import com.lc.learning.swarm.customer.feign.DemoServiceFeign;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -20,10 +21,18 @@ public class CustomerController {
     @Autowired
     private DemoServiceFeign demoServiceFeign;
 
+    @Autowired
+    private UserConfig userConfig;
+
     @GetMapping(value = "/index")
     public String index() {
         String say = demoServiceFeign.index();
         return "hello customer, and demo say：" + say;
+    }
+
+    @GetMapping(value = "/username")
+    public String getUsername() {
+        return "config username: " + userConfig.getUsername();
     }
 
 }

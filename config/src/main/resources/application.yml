@@ -6,9 +6,9 @@ eureka:
     preferIpAddress: true
   client:
     serviceUrl:
-      # ×¢²áµ½ eureka
+      # æ³¨å†Œåˆ° eureka
       defaultZone: http://localhost:1110/eureka
 spring:
   application:
-    # Ó¦ÓÃ³ÌĞòÃû³Æ£¬ºóÃæ»áÔÚÏû·ÑÕßÖĞÓÃµ½
+    # åº”ç”¨ç¨‹åºåç§°ï¼Œåé¢ä¼šåœ¨æ¶ˆè´¹è€…ä¸­ç”¨åˆ°
     name: config-server
