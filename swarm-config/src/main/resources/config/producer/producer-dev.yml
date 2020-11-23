@@ -1,0 +1,5 @@
+data:
+  env: api-producer-dev
+  user:
+    username: api-producer
+    password: 123456

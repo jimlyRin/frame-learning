@@ -11,15 +11,15 @@
     </parent>
 
     <groupId>com.lc.learning</groupId>
-    <artifactId>swarm</artifactId>
+    <artifactId>learn</artifactId>
     <version>0.0.1</version>
-    <name>swarm</name>
+    <packaging>pom</packaging>
 
     <modules>
-        <module>eureka</module>
-        <module>demo</module>
-        <module>customer</module>
-        <module>gateway</module>
+        <module>swarm-eureka</module>
+        <module>swarm-producer</module>
+        <module>swarm-customer</module>
+        <module>swarm-gateway</module>
     </modules>
 
     <properties>
