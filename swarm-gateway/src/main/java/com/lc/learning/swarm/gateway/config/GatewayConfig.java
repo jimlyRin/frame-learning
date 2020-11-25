@@ -20,9 +20,11 @@ public class GatewayConfig {
         return new RestTemplate();
     }
 
+    /*
+     * 代码配置路由，同配置文件配置路由功能一致，供学习备用，当前使用配置文件路由，这里注释
+     */
 //    @Bean
 //    public RouteLocator customRouteLocator(RouteLocatorBuilder builder) {
-//        // 试过用配置文件配置路由，所有过滤器都不生效
 //        return builder.routes()
 //                .route(r -> r.path("/api-producer/**")
 //                        .filters(f -> {

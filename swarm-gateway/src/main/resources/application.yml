@@ -7,42 +7,60 @@ spring:
     name: gateway
   cloud:
     gateway:
+      # cors跨域反问配置
+      globalcors:
+        cors-configurations:
+          '[/**]':
+            allowCredentials: true
+            allowedOrigins: "*"
+            allowedMethods: "*"
+            allowedHeaders: "*"
       discovery:
         locator:
           enabled: false #开启通过服务中心的自动根据serviceId创建路由的功能(这里不能用true，true会自动生成路由，复盖配置的路由)
           lower-case-service-id: true #使用小写service-id
       routes:
-      - id: producer_route
-        uri: lb://api-producer
-        predicates:
-        - Path=/api-producer/**
-        filters:
-        - StripPrefix=1
-        - name: ApiAuth
-        - name: Hystrix
-          args:
-            name: fallbackcmd
-            fallbackUri: forward:/fallback
-      - id: customer_refresh_config
-        uri: lb://api-customer
-        predicates:
-        - Path=/api-customer/actuator/refresh
-        filters:
-        - StripPrefix=1
-        - name: Hystrix
-          args:
-            name: refreshconfig
-            fallbackUri: forward:/fallback
-      - id: customer_route
-        uri: lb://api-customer
-        predicates:
-        - Path=/api-customer/**
-        filters:
-        - StripPrefix=1
-        - name: Hystrix
-          args:
-            name: fallbackcmd
-            fallbackUri: forward:/fallback
+        - id: config_route
+          uri: lb://config-server
+          predicates:
+            - Path=/config-server/**
+          filters:
+            - StripPrefix=1
+            - name: Hystrix
+              args:
+                name: fallbackcmd
+                fallbackUri: forward:/fallback
+        - id: producer_route
+          uri: lb://api-producer
+          predicates:
+            - Path=/api-producer/**
+          filters:
+            - StripPrefix=1
+            - name: ApiAuth
+            - name: Hystrix
+              args:
+                name: fallbackcmd
+                fallbackUri: forward:/fallback
+        - id: customer_refresh_config
+          uri: lb://api-customer
+          predicates:
+            - Path=/api-customer/actuator/refresh
+          filters:
+            - StripPrefix=1
+            - name: Hystrix
+              args:
+                name: refreshconfig
+                fallbackUri: forward:/fallback
+        - id: customer_route
+          uri: lb://api-customer
+          predicates:
+            - Path=/api-customer/**
+          filters:
+            - StripPrefix=1
+            - name: Hystrix
+              args:
+                name: fallbackcmd
+                fallbackUri: forward:/fallback
 
 # 开启熔断器功能
 feign:
