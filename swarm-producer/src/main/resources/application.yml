@@ -8,7 +8,11 @@ eureka:
     serviceUrl:
       # 注册到 eureka
       defaultZone: http://localhost:1110/eureka
+
 spring:
   application:
     # 应用程序名称，后面会在消费者中用到
     name: api-producer
+
+# 测试均衡负载，gateway的策略是轮询节点，这里的名称可以在接口返回查看
+my-app-name: api-producer

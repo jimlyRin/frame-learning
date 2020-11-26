@@ -1,0 +1,11 @@
+#多节点部署，这个配置是producer的第一个节点
+server:
+  port: 3004
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:1111/eureka/,http://localhost:1112/eureka/,http://localhost:1113/eureka/
+
+# 测试均衡负载，gateway的策略是轮询节点，这里的名称可以在接口返回查看
+my-app-name: api-producer-peer1

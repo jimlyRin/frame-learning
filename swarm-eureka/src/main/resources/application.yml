@@ -1,14 +1,26 @@
 server:
   port: 1110
+
+spring:
+  application:
+    name: eureka-center
+#  cloud:
+#    inetutils: ## 网卡设置
+#      ignoredInterfaces:  ## 忽略的网卡
+#        - docker0
+#        - veth.*
+#        - VM.*
+#      preferredNetworks:  ## 优先的网段
+#        - 192.168
+
 eureka:
   instance:
-    hostname: eureka-center
     appname: eureka
   client:
     fetch-registry: false
     register-with-eureka: false # 单点的时候设置为 false 禁止注册自身
-    service-url:
-      default-zone: http://localhost:${server.port}/eureka/
+    serviceUrl:
+      defaultZone: http://localhost:${server.port}/eureka/
   server:
     enable-self-preservation: false
     evictionIntervalTimerInMs: 4000

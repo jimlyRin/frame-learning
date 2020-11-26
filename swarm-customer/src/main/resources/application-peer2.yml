@@ -1,0 +1,8 @@
+#多节点部署，这个配置是customer的第一个节点
+server:
+  port: 3007
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:1111/eureka/,http://localhost:1112/eureka/,http://localhost:1113/eureka/

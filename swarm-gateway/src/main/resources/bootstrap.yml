@@ -3,11 +3,12 @@
 spring:
   cloud:
     config: #Config客户端配置
-      uri: http://192.168.56.1/config-server #配置中心地址
+      uri: http://localhost:3003 #配置中心地址，这里写
       profile: dev #启用配置后缀名称
       label: dev #分支名称
-      name: producer #配置文件名称
+      name: gateway #配置文件名称
 
+# 从config-service获取刷新配置
 management:
   endpoints:
     web:

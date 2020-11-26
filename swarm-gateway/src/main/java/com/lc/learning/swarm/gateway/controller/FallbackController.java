@@ -14,6 +14,6 @@ public class FallbackController {
 
     @GetMapping("/fallback")
     public ResultDto fallback() {
-        return ResultDto.builder().code(100).desc("超时熔断:服务暂时不可用").build();
+        return ResultDto.builder().code(100).desc("熔断:服务暂时不可用").build();
     }
 }
