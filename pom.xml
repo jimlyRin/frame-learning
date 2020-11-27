@@ -21,6 +21,7 @@
         <module>swarm-customer</module>
         <module>swarm-gateway</module>
         <module>swarm-config</module>
+        <module>docker-file-build</module>
     </modules>
 
     <properties>

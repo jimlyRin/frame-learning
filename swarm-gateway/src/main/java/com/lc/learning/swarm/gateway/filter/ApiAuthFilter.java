@@ -16,7 +16,7 @@ import java.nio.charset.StandardCharsets;
 /**
  * 认证过滤器
  *
- * @author linjingliang
+ * @author ljl
  * @version v1.0
  * @date 2020/8/7
  */
