@@ -1,0 +1,15 @@
+# 使用bootstrap.yml是因为config-server的地址需要要服务启动时就读取到
+# bootstrap.yml的优先级高于application.yml，在服务启动时就能获取到这里的配置
+spring:
+  cloud:
+    config: #Config客户端配置
+      uri: http://localhost/config-server #配置中心地址
+      profile: dev #启用配置后缀名称
+      label: dev #分支名称
+      name: customer #配置文件名称
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: 'refresh'

@@ -10,23 +10,34 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
 
-    <groupId>com.lc.learning</groupId>
-    <artifactId>learn</artifactId>
-    <version>0.0.1</version>
+    <groupId>com.lc.frame</groupId>
+    <artifactId>learning</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
     <packaging>pom</packaging>
 
     <modules>
-        <module>swarm-eureka</module>
-        <module>swarm-producer</module>
-        <module>swarm-customer</module>
-        <module>swarm-gateway</module>
-        <module>swarm-config</module>
-        <module>docker-file-build</module>
+        <module>docker-build</module>
+        <module>kafka-demo</module>
+        <module>swarm</module>
     </modules>
 
+    <!-- 项目属性 -->
     <properties>
         <java.version>1.8</java.version>
+        <spring-cloud.version>Hoxton.SR6</spring-cloud.version>
     </properties>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-dependencies</artifactId>
+                <version>${spring-cloud.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
 
     <build>
         <plugins>
