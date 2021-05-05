@@ -13,6 +13,14 @@ spring:
   application:
     # 应用程序名称，后面会在消费者中用到
     name: api-producer
+  quartz:
+    auto-startup: false
 
 # 测试均衡负载，gateway的策略是轮询节点，这里的名称可以在接口返回查看
 my-app-name: api-producer
+
+lc:
+  job:
+    enable: false
+    demo: 0/10 * * * * ?
+    demo2: 0/8 * * * * ?

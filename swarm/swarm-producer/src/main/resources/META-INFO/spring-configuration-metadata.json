@@ -1,0 +1,21 @@
+{
+  "groups": [
+    {
+      "name": "lc.job",
+      "type": "com.lc.frame.swarm.producer.config.JobConfig",
+      "sourceType": "com.lc.frame.swarm.producer.config.JobConfig"
+    }
+  ],
+  "properties": [
+    {
+      "name": "lc.job.demo",
+      "type": "java.lang.String",
+      "sourceType": "com.lc.frame.swarm.producer.config.JobConfig"
+    },
+    {
+      "name": "lc.job.demo2",
+      "type": "java.lang.String",
+      "sourceType": "com.lc.frame.swarm.producer.config.JobConfig"
+    }
+  ]
+}

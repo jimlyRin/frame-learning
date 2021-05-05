@@ -9,7 +9,9 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
+    <groupId>com.lc.frame</groupId>
     <artifactId>swarm</artifactId>
+    <packaging>pom</packaging>
 
     <modules>
         <module>swarm-eureka</module>
@@ -21,6 +23,8 @@
 
     <properties>
         <spring.version>2.2.4.RELEASE</spring.version>
+        <lc.version>0.0.1-SNAPSHOT</lc.version>
+        <lombok.version>1.18.16</lombok.version>
     </properties>
 
     <dependencyManagement>
@@ -46,19 +50,19 @@
             <dependency>
                 <groupId>org.projectlombok</groupId>
                 <artifactId>lombok</artifactId>
-                <optional>true</optional>
+                <version>${lombok.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.lc.frame</groupId>
+                <artifactId>quartz-starter</artifactId>
+                <version>${lc.version}</version>
             </dependency>
 
             <dependency>
                 <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-starter-test</artifactId>
-                <scope>test</scope>
-                <exclusions>
-                    <exclusion>
-                        <groupId>org.junit.vintage</groupId>
-                        <artifactId>junit-vintage-engine</artifactId>
-                    </exclusion>
-                </exclusions>
+                <artifactId>spring-boot-configuration-processor</artifactId>
+                <optional>true</optional>
             </dependency>
         </dependencies>
     </dependencyManagement>

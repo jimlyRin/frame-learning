@@ -1,0 +1,23 @@
+{
+  "groups": [
+    {
+      "name": "lc.job",
+      "type": "com.lc.frame.quartz.starter.properties.LcQuartzProperties",
+      "sourceType": "com.lc.frame.quartz.starter.properties.LcQuartzProperties"
+    }
+  ],
+  "properties": [
+    {
+      "name": "lc.job.enable",
+      "type": "java.lang.Boolean",
+      "sourceType": "com.lc.frame.quartz.starter.properties.LcQuartzProperties"
+    },
+    {
+      "name": "spring.jms.listener.auto-startup",
+      "type": "java.lang.Boolean",
+      "description": "Start the container automatically on startup.",
+      "sourceType": "org.springframework.boot.autoconfigure.jms.JmsProperties$Listener",
+      "defaultValue": false
+    }
+  ]
+}

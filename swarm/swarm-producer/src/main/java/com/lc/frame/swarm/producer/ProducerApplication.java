@@ -5,11 +5,13 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 
 @EnableEurekaClient
-@SpringBootApplication
+@SpringBootApplication(scanBasePackages = "com.lc.frame")
 public class ProducerApplication {
 
     public static void main(String[] args) {
         SpringApplication.run(ProducerApplication.class, args);
+
+
     }
 
 }

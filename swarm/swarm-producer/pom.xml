@@ -4,7 +4,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
-        <artifactId>learning</artifactId>
+        <artifactId>swarm</artifactId>
         <groupId>com.lc.frame</groupId>
         <version>0.0.1-SNAPSHOT</version>
     </parent>
@@ -16,6 +16,7 @@
 
     <properties>
         <java.version>1.8</java.version>
+        <lc.version>0.0.1-SNAPSHOT</lc.version>
     </properties>
 
     <dependencies>
@@ -48,6 +49,7 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
+            <version>2.2.5.RELEASE</version>
             <scope>test</scope>
             <exclusions>
                 <exclusion>
@@ -55,6 +57,19 @@
                     <artifactId>junit-vintage-engine</artifactId>
                 </exclusion>
             </exclusions>
+        </dependency>
+
+        <dependency>
+            <groupId>com.lc.frame</groupId>
+            <artifactId>quartz-starter</artifactId>
+            <version>${lc.version}</version>
+            <scope>compile</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-configuration-processor</artifactId>
+            <optional>true</optional>
         </dependency>
 
     </dependencies>

@@ -4,7 +4,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
-        <artifactId>learning</artifactId>
+        <artifactId>swarm</artifactId>
         <groupId>com.lc.frame</groupId>
         <version>0.0.1-SNAPSHOT</version>
     </parent>
@@ -39,6 +39,7 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
+            <version>2.2.5.RELEASE</version>
             <scope>test</scope>
             <exclusions>
                 <exclusion>
