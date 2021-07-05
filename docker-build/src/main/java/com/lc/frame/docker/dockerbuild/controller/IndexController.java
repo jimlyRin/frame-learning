@@ -1,12 +1,10 @@
 package com.lc.frame.docker.dockerbuild.controller;
 
+import com.lc.frame.docker.dockerbuild.data.AesContent;
 import com.lc.frame.docker.dockerbuild.utils.AESUtils;
 import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 /**
  * @author ljl
@@ -25,14 +23,12 @@ public class IndexController {
         return "hello docker";
     }
 
-    @GetMapping(value = "/encrypt")
-    public String aesEncrypt(@RequestParam("content") String content) {
-        return AESUtils.encryptStr(content, KEY);
-    }
-
-    @GetMapping(value = "/decode")
+    @PostMapping(value = "/aes256")
     @SneakyThrows(Exception.class)
-    public String aesDecode(@RequestParam("content") String content) {
-        return AESUtils.decodeStr(content, KEY);
+    public String aesEncrypt(@RequestBody AesContent body) {
+        if (body.getType() == 1) {
+            return AESUtils.decodeStr(body.getContent(), KEY);
+        }
+        return AESUtils.encryptStr(body.getContent(), KEY);
     }
 }
