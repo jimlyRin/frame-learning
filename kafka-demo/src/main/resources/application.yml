@@ -2,30 +2,53 @@ server:
   port: 3009
 
 spring:
-#  kafka:
-#    consumer:
-#      enable-auto-commit: true
-#      group-id: app-group-1
-#      auto-offset-reset: latest
-#      bootstrap-servers: localhost:9092,localhost:9093,localhost:9094
+  kafka:
+    bootstrap-servers:
+      - localhost:9092
+      - localhost:9093
+      - localhost:9094
+    producer:
+      value-serializer: org.apache.kafka.common.serialization.StringSerializer
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+    consumer:
+      enable-auto-commit: false
+      group-id: app-group-1
+      auto-offset-reset: latest
+      value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      max-poll-records: 10
+      properties:
+        max.poll.interval.ms: 500000
+    listener:
+      ack-mode: manual_immediate
+      concurrency: 2
+      missing-topics-fatal: false
 
-  cloud:
-    stream:
-      default-binder: kafka
-      kafka:
-        binder:
-          brokers:
-            - localhost:9092
-            - localhost:9093
-            - localhost:9094
-        bindings:
-          test-topic:
-            consumer:
-              topic:
-                replicas-assignment:
-                replication-factor: 2
+kafka:
+  consumer:
+    topic:
+      test: test-topic
+    group:
+      group1: app-group-1
+      group2: app-group-2
 
-            binder: kafka
-            destination: test-topic #topic name
-            content-type: text/plain
-            group: input-group-1
+#  cloud:
+#    stream:
+#      default-binder: kafka
+#      kafka:
+#        binder:
+#          brokers:
+#            - localhost:9092
+#            - localhost:9093
+#            - localhost:9094
+#        bindings:
+#          test-topic:
+#            consumer:
+#              topic:
+#                replicas-assignment:
+#                replication-factor: 2
+#
+#            binder: kafka
+#            destination: test-topic #topic name
+#            content-type: text/plain
+#            group: input-group-1

@@ -4,16 +4,9 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class KafkaDemoApplication  // implements CommandLineRunner
-{
+public class KafkaDemoApplication {
 
-    public static void main(String[] args) throws Exception {
+    public static void main(String[] args) {
         SpringApplication.run(KafkaDemoApplication.class, args);
-        // new CountDownLatch(1).await();
     }
-
-//    @Override
-//    public void run(String... args) throws Exception {
-//        Thread.currentThread().join();
-//    }
 }
