@@ -67,7 +67,7 @@ public class AesUtils {
      */
     public static String encryptStr(String content, String pkey, String ivkey) {
         byte[] aesEncrypt = encrypt(content, pkey, ivkey);
-        String base64EncodeStr = Base64.encodeBase64String(aesEncrypt);
+        String base64EncodeStr = Base64.encodeBase64URLSafeString(aesEncrypt);
         return base64EncodeStr;
     }
 
