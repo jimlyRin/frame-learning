@@ -6,7 +6,7 @@ spring:
     bootstrap-servers:
       - localhost:9092
       - localhost:9093
-      - localhost:9094
+#      - localhost:9094
     producer:
       value-serializer: org.apache.kafka.common.serialization.StringSerializer
       key-serializer: org.apache.kafka.common.serialization.StringSerializer
@@ -25,9 +25,10 @@ spring:
       missing-topics-fatal: false
 
 kafka:
+  enable: true
   consumer:
     topic:
-      test: test-topic
+      topic1: test-topic
     group:
       group1: app-group-1
       group2: app-group-2
