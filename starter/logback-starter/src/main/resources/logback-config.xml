@@ -46,7 +46,7 @@
         </filter>
         <encoder>
             <charset>UTF-8</charset>
-            <pattern>{"time":"%d{yyyy-MM-dd HH:mm:ss.SSS}", "level":"%-5level", "appName":"${appName}", "thread":"%thread", "traceId":"%X{X-B3-TraceId:-}", "spanId":"%X{X-B3-SpanId:-}", "class":"%logger{32}", "line":"%F:%L", "msg":"%replace(%replace(%msg){'"', '\\"'}){'\n', '\\n'}"}%n</pattern>
+            <pattern>{"time":"%d{yyyy-MM-dd HH:mm:ss.SSS}", "level":"%-5level", "appName":"${appName}", "thread":"%thread", "traceId":"%X{X-B3-TraceId:-}", "spanId":"%X{X-B3-SpanId:-}", "class":"%logger{32}", "line":"%F:%L", "msg":"%replace(%replace(%replace(%msg){'"', '\\"'}){'\r\n', '\\r\\n'}){'\n', '\\n'}"}%n</pattern>
         </encoder>
     </appender>
 
@@ -70,7 +70,7 @@
         </filter>
         <encoder>
             <charset>UTF-8</charset>
-            <pattern>{"time":"%d{yyyy-MM-dd HH:mm:ss.SSS}", "level":"%-5level", "appName":"${appName}", "thread":"%thread", "traceId":"%X{X-B3-TraceId:-}", "spanId":"%X{X-B3-SpanId:-}", "class":"%logger{32}", "line":"%F:%L", "msg":"%replace(%replace(%msg){'"', '\\"'}){'\n', '\\n'}"}%n</pattern>
+            <pattern>{"time":"%d{yyyy-MM-dd HH:mm:ss.SSS}", "level":"%-5level", "appName":"${appName}", "thread":"%thread", "traceId":"%X{X-B3-TraceId:-}", "spanId":"%X{X-B3-SpanId:-}", "class":"%logger{32}", "line":"%F:%L", "msg":"%replace(%replace(%replace(%msg){'"', '\\"'}){'\r\n', '\\r\\n'}){'\n', '\\n'}"}%n</pattern>
         </encoder>
     </appender>
 
@@ -94,7 +94,7 @@
         </filter>
         <encoder>
             <charset>UTF-8</charset>
-            <pattern>{"time":"%d{yyyy-MM-dd HH:mm:ss.SSS}", "level":"%-5level", "appName":"${appName}", "thread":"%thread", "traceId":"%X{X-B3-TraceId:-}", "spanId":"%X{X-B3-SpanId:-}", "class":"%logger{32}", "line":"%F:%L", "msg":"%replace(%replace(%msg){'"', '\\"'}){'\n', '\\n'}"}%n</pattern>
+            <pattern>{"time":"%d{yyyy-MM-dd HH:mm:ss.SSS}", "level":"%-5level", "appName":"${appName}", "thread":"%thread", "traceId":"%X{X-B3-TraceId:-}", "spanId":"%X{X-B3-SpanId:-}", "class":"%logger{32}", "line":"%F:%L", "msg":"%replace(%replace(%replace(%msg){'"', '\\"'}){'\r\n', '\\r\\n'}){'\n', '\\n'}"}%n</pattern>
         </encoder>
     </appender>
 
@@ -118,7 +118,7 @@
         </filter>
         <encoder>
             <charset>UTF-8</charset>
-            <pattern>{"time":"%d{yyyy-MM-dd HH:mm:ss.SSS}", "level":"%-5level", "appName":"${appName}", "thread":"%thread", "traceId":"%X{X-B3-TraceId:-}", "spanId":"%X{X-B3-SpanId:-}", "class":"%logger{32}", "line":"%F:%L", "msg":"%replace(%replace(%msg){'"', '\\"'}){'\n', '\\n'}"}%n</pattern>
+            <pattern>{"time":"%d{yyyy-MM-dd HH:mm:ss.SSS}", "level":"%-5level", "appName":"${appName}", "thread":"%thread", "traceId":"%X{X-B3-TraceId:-}", "spanId":"%X{X-B3-SpanId:-}", "class":"%logger{32}", "line":"%F:%L", "msg":"%replace(%replace(%replace(%msg){'"', '\\"'}){'\r\n', '\\r\\n'}){'\n', '\\n'}"}%n</pattern>
         </encoder>
     </appender>
 
