@@ -13,6 +13,8 @@
     <packaging>pom</packaging>
     <modules>
         <module>quartz-starter</module>
+        <module>logback-starter</module>
+        <module>log4j2-starter</module>
     </modules>
 
 <!--    <dependencyManagement>-->

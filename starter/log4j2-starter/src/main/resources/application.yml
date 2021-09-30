@@ -1,0 +1,16 @@
+spring:
+  application:
+    name: log4j2-starter
+
+#日志信息的配置
+logback:
+  # true 表示打印日志  false表示不打印日志
+  logSwitch: true
+  logDir: /data/logs/log-starter
+  debugName: debug
+  infoName: info
+  errorName: error
+  warnName: warn
+  logIp: ${spring.cloud.client.ip-address}
+logging:
+  config: classpath:log4j2-config.xml

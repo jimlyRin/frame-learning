@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration scan="true" scanPeriod="60 seconds" debug="false">
+    <include resource="org/springframework/boot/logging/logback/defaults.xml"/>
+    <!-- 定义日志的根目录 -->
+    <springProperty scope="context" name="LOG-ROOT-PATH" source="logback.logDir"/>
+
+    <!-- 定义日志文件名称 -->
+    <springProperty scope="context" name="debugName" source="logback.debugName"/>
+    <springProperty scope="context" name="infoName" source="logback.infoName"/>
+    <springProperty scope="context" name="errorName" source="logback.errorName"/>
+    <springProperty scope="context" name="warnName" source="logback.warnName"/>
+    <springProperty scope="context" name="logIp" source="logback.logIp"/>
+    <!-- 应用名 -->
+    <springProperty scope="context" name="appName" source="spring.application.name"/>
+    <!-- 定义日志的开关-->
+    <springProperty scope="context" name="logSwitch" source="logback.logSwitch"/>
+
+    <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>${CONSOLE_LOG_PATTERN}</pattern>
+        </encoder>
+        <!--展示格式 layout-->
+        <encoder>
+            <charset>UTF-8</charset>
+            <pattern>{"time":"%d{yyyy-MM-dd HH:mm:ss.SSS}", "level":"%-5level", "appName":"${appName}", "thread":"%thread", "traceId":"%X{X-B3-TraceId:-}", "spanId":"%X{X-B3-SpanId:-}", "class":"%logger{32}", "line":"%F:%L", "msg":"%msg"}%n</pattern>
+        </encoder>
+    </appender>
+
+    <appender name="INFO_FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <encoder>
+            <pattern>${FILE_LOG_PATTERN}</pattern>
+        </encoder>
+        <file>${LOG-ROOT-PATH}/day-date/${logIp}-${infoName}.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <FileNamePattern>${LOG-ROOT-PATH}/%d{yyyy-MM-dd}/${logIp}-${infoName}-%d{yyyy-MM-dd}-%i.txt</FileNamePattern>
+            <MaxHistory>7</MaxHistory>
+            <timeBasedFileNamingAndTriggeringPolicy
+                    class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
+                <maxFileSize>10MB</maxFileSize>
+            </timeBasedFileNamingAndTriggeringPolicy>
+        </rollingPolicy>
+        <filter class="ch.qos.logback.classic.filter.LevelFilter">
+            <level>INFO</level>
+            <onMatch>ACCEPT</onMatch>
+            <onMismatch>DENY</onMismatch>
+        </filter>
+        <encoder>
+            <charset>UTF-8</charset>
+            <pattern>{"time":"%d{yyyy-MM-dd HH:mm:ss.SSS}", "level":"%-5level", "appName":"${appName}", "thread":"%thread", "traceId":"%X{X-B3-TraceId:-}", "spanId":"%X{X-B3-SpanId:-}", "class":"%logger{32}", "line":"%F:%L", "msg":"%replace(%replace(%msg){'"', '\\"'}){'\n', '\\n'}"}%n</pattern>
+        </encoder>
+    </appender>
+
+    <appender name="DEBUG_FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <encoder>
+            <pattern>${FILE_LOG_PATTERN}</pattern>
+        </encoder>
+        <file>${LOG-ROOT-PATH}/day-date/${logIp}-${debugName}.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <FileNamePattern>${LOG-ROOT-PATH}/%d{yyyy-MM-dd}/${logIp}-${debugName}-%d{yyyy-MM-dd}-%i.txt</FileNamePattern>
+            <MaxHistory>7</MaxHistory>
+            <timeBasedFileNamingAndTriggeringPolicy
+                    class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
+                <maxFileSize>10MB</maxFileSize>
+            </timeBasedFileNamingAndTriggeringPolicy>
+        </rollingPolicy>
+        <filter class="ch.qos.logback.classic.filter.LevelFilter">
+            <level>DEBUG</level>
+            <onMatch>ACCEPT</onMatch>
+            <onMismatch>DENY</onMismatch>
+        </filter>
+        <encoder>
+            <charset>UTF-8</charset>
+            <pattern>{"time":"%d{yyyy-MM-dd HH:mm:ss.SSS}", "level":"%-5level", "appName":"${appName}", "thread":"%thread", "traceId":"%X{X-B3-TraceId:-}", "spanId":"%X{X-B3-SpanId:-}", "class":"%logger{32}", "line":"%F:%L", "msg":"%replace(%replace(%msg){'"', '\\"'}){'\n', '\\n'}"}%n</pattern>
+        </encoder>
+    </appender>
+
+    <appender name="WARN_FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <encoder>
+            <pattern>${FILE_LOG_PATTERN}</pattern>
+        </encoder>
+        <file>${LOG-ROOT-PATH}/day-date/${logIp}-${warnName}.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <FileNamePattern>${LOG-ROOT-PATH}/%d{yyyy-MM-dd}/${logIp}-${warnName}-%d{yyyy-MM-dd}-%i.txt</FileNamePattern>
+            <MaxHistory>7</MaxHistory>
+            <timeBasedFileNamingAndTriggeringPolicy
+                    class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
+                <maxFileSize>10MB</maxFileSize>
+            </timeBasedFileNamingAndTriggeringPolicy>
+        </rollingPolicy>
+        <filter class="ch.qos.logback.classic.filter.LevelFilter">
+            <level>WARN</level>
+            <onMatch>ACCEPT</onMatch>
+            <onMismatch>DENY</onMismatch>
+        </filter>
+        <encoder>
+            <charset>UTF-8</charset>
+            <pattern>{"time":"%d{yyyy-MM-dd HH:mm:ss.SSS}", "level":"%-5level", "appName":"${appName}", "thread":"%thread", "traceId":"%X{X-B3-TraceId:-}", "spanId":"%X{X-B3-SpanId:-}", "class":"%logger{32}", "line":"%F:%L", "msg":"%replace(%replace(%msg){'"', '\\"'}){'\n', '\\n'}"}%n</pattern>
+        </encoder>
+    </appender>
+
+    <appender name="ERROR_FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <encoder>
+            <pattern>${FILE_LOG_PATTERN}</pattern>
+        </encoder>
+        <file>${LOG-ROOT-PATH}/day-date/${logIp}-${errorName}.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <FileNamePattern>${LOG-ROOT-PATH}/%d{yyyy-MM-dd}/${logIp}-${errorName}-%d{yyyy-MM-dd}-%i.txt</FileNamePattern>
+            <MaxHistory>7</MaxHistory>
+            <timeBasedFileNamingAndTriggeringPolicy
+                    class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
+                <maxFileSize>10MB</maxFileSize>
+            </timeBasedFileNamingAndTriggeringPolicy>
+        </rollingPolicy>
+        <filter class="ch.qos.logback.classic.filter.LevelFilter">
+            <level>ERROR</level>
+            <onMatch>ACCEPT</onMatch>
+            <onMismatch>DENY</onMismatch>
+        </filter>
+        <encoder>
+            <charset>UTF-8</charset>
+            <pattern>{"time":"%d{yyyy-MM-dd HH:mm:ss.SSS}", "level":"%-5level", "appName":"${appName}", "thread":"%thread", "traceId":"%X{X-B3-TraceId:-}", "spanId":"%X{X-B3-SpanId:-}", "class":"%logger{32}", "line":"%F:%L", "msg":"%replace(%replace(%msg){'"', '\\"'}){'\n', '\\n'}"}%n</pattern>
+        </encoder>
+    </appender>
+
+    <root level="INFO">
+        <if condition='${logSwitch}'>
+            <then>
+                <appender-ref ref="CONSOLE"/>
+                <appender-ref ref="INFO_FILE"/>
+                <appender-ref ref="DEBUG_FILE"/>
+                <appender-ref ref="WARN_FILE"/>
+                <appender-ref ref="ERROR_FILE"/>
+            </then>
+        </if>
+    </root>
+
+</configuration>
