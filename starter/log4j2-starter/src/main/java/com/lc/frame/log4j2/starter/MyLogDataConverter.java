@@ -11,7 +11,7 @@ import org.apache.logging.log4j.core.pattern.PatternConverter;
  * Plugin 表示的是这是一个插件，name是名称，category为PatternConverter.CATEGORY（目前插件只有这个选择）ConverterKeys表示的就是自定义的参数,可以多个
  */
 @Plugin(name = "MyLogDataConverter", category = PatternConverter.CATEGORY)
-@ConverterKeys({ "rep" })
+@ConverterKeys({ "rep_msg" })
 public class MyLogDataConverter extends LogEventPatternConverter {
 
     private static final MyLogDataConverter INSTANCE = new MyLogDataConverter();
@@ -29,7 +29,7 @@ public class MyLogDataConverter extends LogEventPatternConverter {
      * 提供一个私有的构造函数，调用父类的构造函数，函数需要提供两个参数 第一个参数是转换器的名称，第二个是css样式
      */
     public MyLogDataConverter() {
-        super("rep", "rep");
+        super("rep_msg", "rep_msg");
     }
 
     /**
@@ -46,10 +46,10 @@ public class MyLogDataConverter extends LogEventPatternConverter {
             message = message.replaceAll("\"", "\\\"");
         }
         if (message.contains("\r\n")) {
-            message = message.replaceAll("\r\n", "\\r\\n");
+            message = message.replaceAll("\r\n", "\\\\r\\\\n");
         }
         if (message.contains("\n")) {
-            message = message.replaceAll("\n", "\\n");
+            message = message.replaceAll("\n", "\\\\n");
         }
         toAppendTo.append(message);
     }

@@ -9,11 +9,11 @@
         <!-- %logger{36} 表示 Logger 名字最长36个字符 -->
         <!-- <property name="LOG_PATTERN" value="%date{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level [%C] %logger{36} - %msg%n" />-->
         <!-- 定义日志存储的路径 -->
-        <property name="FILE_PATH" value="D:\Data\logs\log-starter" />
+        <property name="FILE_PATH" value="D:\Data\logs\log-demo" />
         <property name="FILE_NAME" value="log4j2-starter" />
         <property name="APP_NAME" value="log4j2-starter" />
-<!--        <property name="LOG_IP" value="${ctx:logIp}" />-->
-        <property name="LOG_PATTERN">{"time":"%date{yyyy-MM-dd HH:mm:ss.SSS}", "level":"%-5level", "appName":"${APP_NAME}", "thread":"%thread", "traceId":"%X{X-B3-TraceId:-}", "spanId":"%X{X-B3-SpanId:-}", "class":"%logger{36}", "line":"%F:%L", "msg":"%rep(%msg)"}%n</property>
+        <!--        <property name="LOG_IP" value="${ctx:logIp}" />-->
+        <property name="LOG_PATTERN">{"time":"%date{yyyy-MM-dd HH:mm:ss.SSS}", "level":"%-5level", "appName":"${APP_NAME}", "thread":"%thread", "traceId":"%X{X-B3-TraceId:-}", "spanId":"%X{X-B3-SpanId:-}", "class":"%logger{36}", "line":"%F:%L", "msg":"%rep_msg"}%n</property>
     </Properties>
 
     <appenders>
@@ -26,9 +26,9 @@
         </console>
 
         <!--文件会打印出所有信息，这个log每次运行程序会自动清空，由append属性决定，适合临时测试用-->
-<!--        <File name="Filelog" fileName="${FILE_PATH}/log-${FILE_NAME}.log" append="false">-->
-<!--            <PatternLayout pattern="${LOG_PATTERN}"/>-->
-<!--        </File>-->
+        <!--        <File name="Filelog" fileName="${FILE_PATH}/log-${FILE_NAME}.log" append="false">-->
+        <!--            <PatternLayout pattern="${LOG_PATTERN}"/>-->
+        <!--        </File>-->
 
         <!-- 这个会打印出所有的info及以下级别的信息，每次大小超过size，则这size大小的日志会自动存入按年份-月份建立的文件夹下面并进行压缩，作为存档-->
         <RollingFile name="RollingFileInfo" fileName="${FILE_PATH}/info.log" filePattern="${FILE_PATH}/${FILE_NAME}-INFO-%d{yyyy-MM-dd}_%i.log.gz">
@@ -115,9 +115,14 @@
             <AppenderRef ref="Console"/>
         </Logger>
 
+        <Logger name="org.apache.kafka" level="error" additivity="false">
+            <AppenderRef ref="Console"/>
+            <appender-ref ref="RollingFileError"/>
+        </Logger>
+
         <root level="debug">
             <appender-ref ref="Console"/>
-<!--            <appender-ref ref="Filelog"/>-->
+            <!--            <appender-ref ref="Filelog"/>-->
             <appender-ref ref="RollingFileInfo"/>
             <appender-ref ref="RollingFileWarn"/>
             <appender-ref ref="RollingFileError"/>
