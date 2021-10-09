@@ -43,7 +43,10 @@ public class MyLogDataConverter extends LogEventPatternConverter {
         String message = event.getMessage().getFormattedMessage();
 
         if (message.contains("\"")) {
-            message = message.replaceAll("\"", "\\\"");
+            message = message.replaceAll("\"", "\\\\\"");
+        }
+        if (message.contains("\t")) {
+            message = message.replaceAll("\t", "  ");
         }
         if (message.contains("\r\n")) {
             message = message.replaceAll("\r\n", "\\\\r\\\\n");
