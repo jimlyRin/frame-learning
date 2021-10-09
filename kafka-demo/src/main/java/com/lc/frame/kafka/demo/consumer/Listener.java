@@ -22,11 +22,11 @@ public class Listener {
         ack.acknowledge();
     }
 
-    @KafkaListener(topics = {"#{'${kafka.consumer.topic.topic1}'}"},groupId = "#{'${kafka.consumer.group.group2}'}")
-    public void listenTestSinkGroup2(ConsumerRecord<?, ?> record, Acknowledgment ack) {
-        Optional.ofNullable(record.value()).ifPresent(kafkaMessage -> {
-            log.info("kafka group2 接收到信息： {}", kafkaMessage);
-        });
-        ack.acknowledge();
-    }
+//    @KafkaListener(topics = {"#{'${kafka.consumer.topic.topic1}'}"},groupId = "#{'${kafka.consumer.group.group2}'}")
+//    public void listenTestSinkGroup2(ConsumerRecord<?, ?> record, Acknowledgment ack) {
+//        Optional.ofNullable(record.value()).ifPresent(kafkaMessage -> {
+//            log.info("kafka group2 接收到信息： {}", kafkaMessage);
+//        });
+//        ack.acknowledge();
+//    }
 }

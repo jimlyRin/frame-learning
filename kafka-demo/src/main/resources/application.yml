@@ -2,6 +2,8 @@ server:
   port: 3009
 
 spring:
+  application:
+    name: kafka-demo
   kafka:
     bootstrap-servers:
       - localhost:9092
@@ -28,10 +30,10 @@ kafka:
   enable: true
   consumer:
     topic:
-      topic1: test-topic
+      topic1: test_topic
     group:
-      group1: app-group-1
-      group2: app-group-2
+      group1: app_group_1
+      group2: app_group_2
 
 #  cloud:
 #    stream:
@@ -53,3 +55,17 @@ kafka:
 #            destination: test-topic #topic name
 #            content-type: text/plain
 #            group: input-group-1
+
+#日志信息的配置
+logback:
+  # true 表示打印日志  false表示不打印日志
+  logSwitch: true
+  logDir: /data/logs/log-starter
+  debugName: debug
+  infoName: info
+  errorName: error
+  warnName: warn
+  logIp: ${spring.cloud.client.ip-address}
+logging:
+  config: classpath:logback-config.xml
+  #config: classpath:log4j2.xml
