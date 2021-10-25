@@ -67,5 +67,5 @@ logback:
   warnName: warn
   logIp: ${spring.cloud.client.ip-address}
 logging:
-  config: classpath:logback-config.xml
-  #config: classpath:log4j2.xml
+  #config: classpath:logback-config.xml
+  config: classpath:log4j2.xml
